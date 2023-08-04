@@ -17,7 +17,7 @@ function App() {
     const email = e.target.email.value
 
     const user = {email, name}
-    console.log(user)
+    // console.log(user)
 
     fetch('http://localhost:5000/users', {
       method: "POST",
@@ -25,7 +25,12 @@ function App() {
       body: JSON.stringify(user)
     })
       .then(res => res.json())
-      .catch(err => console.log(err))
+      .then(data => {
+        
+        setUsers([...users, data])
+
+        e.target.reset()
+      })
   }
 
   return (
@@ -42,7 +47,7 @@ function App() {
 
       <div>
         {
-          // users.map(user => <p key={user.id}>{user.name}</p>)
+          users.map(user => <p key={user.id}>{user.name}</p>)
         }
       </div>
   
