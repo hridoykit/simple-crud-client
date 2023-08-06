@@ -1,15 +1,6 @@
-import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    fetch('http://localhost:5000/users')
-      .then(res => res.json())
-      .then(data => setUsers(data))
-  }, [])
-
   const handleSubmit = e => {
     e.preventDefault()
 
@@ -17,21 +8,22 @@ function App() {
     const email = e.target.email.value
 
     const user = {email, name}
-    // console.log(user)
+    console.log(user)
 
-    fetch('http://localhost:5000/users', {
+    //send client side data to the server side
+    fetch('http://localhost:5000/users',{
       method: "POST",
-      headers: {"Content-Type" : "application/json"},
+      headers: {"content-type": "application/json"},
       body: JSON.stringify(user)
     })
       .then(res => res.json())
       .then(data => {
-        
-        setUsers([...users, data])
-
-        e.target.reset()
-      })
+        if(data.insertedId){
+          alert('users added succecfully')
+        }
+        console.log(data)})
   }
+
 
   return (
     <>
@@ -47,7 +39,7 @@ function App() {
 
       <div>
         {
-          users.map(user => <p key={user.id}>{user.name}</p>)
+          // users.map(user => <p key={user.id}>{user.name}</p>)
         }
       </div>
   
