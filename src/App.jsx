@@ -11,19 +11,20 @@ function App() {
     console.log(user)
 
     //send client side data to the server side
-    fetch('http://localhost:5000/users',{
+    fetch('http://localhost:5000/users', {
       method: "POST",
       headers: {"content-type": "application/json"},
       body: JSON.stringify(user)
     })
       .then(res => res.json())
       .then(data => {
-        if(data.insertedId){
-          alert('users added succecfully')
+        console.log(data)
+        if (data.insertedId) {
+          alert('user added successfully')
         }
-        console.log(data)})
+        e.target.reset();
+      });
   }
-
 
   return (
     <>
@@ -36,13 +37,6 @@ function App() {
         <br />
         <button type='submit'>submit</button>
       </form>
-
-      <div>
-        {
-          // users.map(user => <p key={user.id}>{user.name}</p>)
-        }
-      </div>
-  
     </>
   )
 }

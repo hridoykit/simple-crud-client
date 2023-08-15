@@ -6,9 +6,13 @@ import Users from './components/Users.jsx'
 import './index.css'
 
 const router = createBrowserRouter([
-  { path: '/', element: <App /> },
-  { path: '/users',
-    element: <Users />,
+  {
+    path: '/',
+    element: <App />
+  },
+  {
+    path: '/users',
+    element : <Users />,
     loader: () => fetch('http://localhost:5000/users')
   }
 ])
