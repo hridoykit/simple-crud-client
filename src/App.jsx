@@ -4,10 +4,10 @@ function App() {
   const handleSubmit = e => {
     e.preventDefault()
 
-    const name = e.target.name.value
-    const email = e.target.email.value
+    const name = e.target.name.value;
+    const email = e.target.email.value;
 
-    const user = {email, name}
+    const user = {email, name};
     console.log(user)
 
     //send client side data to the server side
@@ -35,7 +35,7 @@ function App() {
         <input type="email" name="email" id="email" placeholder='ur email' />
         <br />
         <br />
-        <button type='submit'>submit</button>
+        <button type='submit'> submit </button>
       </form>
     </>
   )
